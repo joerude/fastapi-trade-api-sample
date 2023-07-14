@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.8
 
 RUN mkdir /fastapi_app
 
@@ -12,5 +12,8 @@ COPY . .
 
 RUN chmod a+x docker/*.sh
 
-#WORKDIR src
-#CMD gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000
+RUN alembic upgrade head
+
+WORKDIR src
+
+CMD gunicorn main:app --workers 1 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000
