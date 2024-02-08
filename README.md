@@ -42,7 +42,7 @@ cd fastapi-trade-api-sample
 ```
 5. Run the following command to build and launch the project using docker-compose:
 ```bash
-docker compose up --build 
+docker-compose up --build 
 ```
 
 
